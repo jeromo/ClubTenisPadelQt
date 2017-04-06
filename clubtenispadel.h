@@ -6,6 +6,9 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QUrl>
+#include <QUrlQuery>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 namespace Ui {
 class ClubTenisPadel;
@@ -22,13 +25,18 @@ public:
 private:
     Ui::ClubTenisPadel *ui;
     QNetworkAccessManager manager;
+    QString token;
+    QUrl urlToken ;
+    QUrl urlSample;
 
+    void getToken(QNetworkReply* reply);
 
 private slots:
     void on_sampleButton_clicked();
     void on_quitutton_clicked();
 
 public slots:
-    void requestFinished(QNetworkReply *reply);};
+    void requestFinished(QNetworkReply *reply);
+};
 
 #endif // CLUBTENISPADEL_H
